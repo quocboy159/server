@@ -7,6 +7,11 @@ const createUser = async(userRequest) => {
     return await user.save();
 }
 
+const findUserById = async (id) => {
+    const user = await userEntity.findById(id).exec();
+    return user;
+}
+
 const findUserByEmail = async (email) => {
     if (!email) {
         return null;
@@ -18,6 +23,7 @@ const findUserByEmail = async (email) => {
 
 export {
     findUserByEmail,
+    findUserById,
     getAllUsers,
     createUser
 }

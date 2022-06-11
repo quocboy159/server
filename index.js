@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import bodyparser from 'body-parser'
 import compression from 'compression';
+import cors from 'cors'
 import { connectDb } from './src/helpers/db.helpers'
 import { generateRouters } from './src/routes'
 
@@ -12,7 +13,8 @@ app.use(logger('dev'));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(compression())
+app.use(compression());
+app.use(cors());
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
